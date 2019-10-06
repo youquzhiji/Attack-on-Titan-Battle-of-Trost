@@ -1,22 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 189, in script
-    n "你还记得五年前的惨剧。超大型巨人的攻击和玛利亚之墙的沦陷。人类不得不退缩至领土深处，并且因此损失了20%的人口。"
-ValueError: unsupported format character '?' (0x7684) at index 52
+  File "game/script.rpy", line 7, in script
+    define been_outerwalls=FALSE
+  File "game/script.rpy", line 7, in <module>
+    define been_outerwalls=FALSE
+NameError: name 'FALSE' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 189, in script
-    n "你还记得五年前的惨剧。超大型巨人的攻击和玛利亚之墙的沦陷。人类不得不退缩至领土深处，并且因此损失了20%的人口。"
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ast.py", line 706, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\exports.py", line 1325, in say
-    what = what % tag_quoting_dict
-ValueError: unsupported format character '?' (0x7684) at index 52
+  File "game/script.rpy", line 7, in script
+    define been_outerwalls=FALSE
+  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ast.py", line 2106, in execute
+    value = renpy.python.py_eval_bytecode(self.code.bytecode)
+  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\python.py", line 2028, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 7, in <module>
+    define been_outerwalls=FALSE
+NameError: name 'FALSE' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.2.320
 AOT BATTLE OF TROST 1.0
-Sat Oct 05 23:23:16 2019
+Sat Oct 05 23:51:25 2019

@@ -4,6 +4,7 @@ define n=Character("旁白")
 default survive=[0,0,0,0,0,0,0,0,0,0]
 default unlockedclues=[0,0,0]
 define arminindex=0
+define been_outerwalls=0
 init python:
 
     def generateclue(gatheredclues):
@@ -226,6 +227,32 @@ label chapter_9:
     n "那么现在要去哪里呢？"
 label chapter_10:
     show map
+    menu:
+        "外侧城门" if been_outerwalls==0:
+            $ been_outerwalls=1
+            jump chapter_21
+        "外墙":
+            jump chapter_38
+        "路边的孩子":
+            jump chapter_43
+        "小路":
+            jump chapter_50
+        "饭店":
+            jump chapter_25
+        "巨石":
+            jump chapter_31
+        "裁缝铺":
+            jump chapter_53
+        "兵团指挥部":
+            jump chapter_34
+        "小巷":
+            jump chapter_15
+        "河岸":
+            jump chapter_11
+        "中央大街":
+            jump chapter_16
+        "内城门":
+            jump chapter_48
 label chapter_11:
 label chapter_12:
 label chapter_13:
@@ -237,6 +264,12 @@ label chapter_18:
 label chapter_19:
 label chapter_20:
 label chapter_21:
+    n "调查兵团出去了"
+    menu:
+        "回忆出击场景":
+            jump chapter_22
+        "返回镇子":
+            jump chapter_10
 label chapter_22:
 label chapter_23:
 label chapter_24:
