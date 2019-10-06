@@ -1,70 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00gamemenu.rpy", line 173, in script
-    $ ui.interact()
-  File "renpy/common/00gamemenu.rpy", line 173, in <module>
-    $ ui.interact()
-  File "game/screens.rpy", line 166, in execute
-    screen battlereport():
-  File "game/screens.rpy", line 166, in execute
-    screen battlereport():
-  File "game/screens.rpy", line 167, in execute
-    frame:
-  File "game/screens.rpy", line 174, in execute
-    window:
-  File "game/screens.rpy", line 180, in execute
-    text clues color("#000")
-Exception: Cannot display None as text.
+  File "game/script.rpy", line 189, in script
+    n "你还记得五年前的惨剧。超大型巨人的攻击和玛利亚之墙的沦陷。人类不得不退缩至领土深处，并且因此损失了20%的人口。"
+ValueError: unsupported format character '?' (0x7684) at index 52
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00gamemenu.rpy", line 173, in script
-    $ ui.interact()
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ast.py", line 912, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\python.py", line 2004, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/00gamemenu.rpy", line 173, in <module>
-    $ ui.interact()
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ui.py", line 295, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 2699, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 3091, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 541, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 541, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 541, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 541, in visit_all
-    d.visit_all(callback, seen)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\screen.py", line 430, in visit_all
-    callback(self)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\core.py", line 3091, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\screen.py", line 440, in per_interact
-    self.update()
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\display\screen.py", line 625, in update
-    self.screen.function(**self.scope)
-  File "game/screens.rpy", line 166, in execute
-    screen battlereport():
-  File "game/screens.rpy", line 166, in execute
-    screen battlereport():
-  File "game/screens.rpy", line 167, in execute
-    frame:
-  File "game/screens.rpy", line 174, in execute
-    window:
-  File "game/screens.rpy", line 180, in execute
-    text clues color("#000")
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\text\text.py", line 1464, in __init__
-    raise Exception("Cannot display {0!r} as text.".format(i))
-Exception: Cannot display None as text.
+  File "game/script.rpy", line 189, in script
+    n "你还记得五年前的惨剧。超大型巨人的攻击和玛利亚之墙的沦陷。人类不得不退缩至领土深处，并且因此损失了20%的人口。"
+  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ast.py", line 706, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\exports.py", line 1325, in say
+    what = what % tag_quoting_dict
+ValueError: unsupported format character '?' (0x7684) at index 52
 
 Windows-8-6.2.9200
 Ren'Py 7.3.2.320
 AOT BATTLE OF TROST 1.0
-Wed Sep 04 23:52:34 2019
+Sat Oct 05 23:23:16 2019
