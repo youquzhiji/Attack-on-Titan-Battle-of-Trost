@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 7, in script
-    define been_outerwalls=FALSE
-  File "game/script.rpy", line 7, in <module>
-    define been_outerwalls=FALSE
+  File "game/script.rpy", line 26, in script
+    init python:
+  File "game/script.rpy", line 27, in <module>
+    been_outergate=FALSE
 NameError: name 'FALSE' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 7, in script
-    define been_outerwalls=FALSE
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ast.py", line 2106, in execute
-    value = renpy.python.py_eval_bytecode(self.code.bytecode)
-  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\python.py", line 2028, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 7, in <module>
-    define been_outerwalls=FALSE
+  File "game/script.rpy", line 26, in script
+    init python:
+  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\ast.py", line 912, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\luigi\Downloads\Programs\renpy-7.3.2-sdk\renpy\python.py", line 2004, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 27, in <module>
+    been_outergate=FALSE
 NameError: name 'FALSE' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.2.320
 AOT BATTLE OF TROST 1.0
-Sat Oct 05 23:51:25 2019
+Sun Oct 06 20:05:05 2019

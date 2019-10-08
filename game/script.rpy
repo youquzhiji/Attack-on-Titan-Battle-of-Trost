@@ -1,18 +1,69 @@
 ﻿# 游戏的脚本可置于此文件中。
 define armin=Character("阿尔敏")
 define n=Character("旁白")
-default survive=[0,0,0,0,0,0,0,0,0,0]
+default survive=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 default unlockedclues=[0,0,0]
+default affinity=[0,0,0,0,0,0]
 define arminindex=0
-define been_outerwalls=0
-init python:
+define mikasaindex=1
+define erenindex=2
+define sashaindex=3
+define kristaindex=4
+define jeanindex=5
+define annieindex=6
+define bertoltindex=7
+define reinerindex=8
+define connieindex=9
+define marcoindex=10
+define frazindex=11
+define hannahindex=12
+define sq34index=13
+define leviindex=14
+define ricoindex=15
+define ianindex=16
+define mitabiindex=17
 
+default been_outergate=False
+default been_outerwalls=False
+default been_kids=False
+default been_sideroad=False
+default been_restaurant=False
+default been_boulder=False
+default been_tailor=False
+default been_headquaters=False
+default been_backalley=False
+default been_riverbank=False
+default been_mainstreet=False
+default been_innergate=False
+default lastchoice=1
+default alked_lovebirds=False
+default seen_tutorial=False
+#
+init python:
+#map  variables
+
+    def retry(lastchoice):
+        renpy.jump("chapter_"+lastchoice)
+    def restartbeginning():
+        survive=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        unlockedclues=[0,0,0]
+        affinity=[0,0,0,0,0,0]
+        renpy.jump(chapter_1)
+    def restarttown():
+        survive=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        unlockedclues=[0,0,0]
+        affinity=[0,0,0,0,0,0]
+        renpy.jump(chapter_10)
+    def inheritedrestart():
+        affinity=[0,0,0,0,0,0]
+        survive=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        renpy.jump(chapter_1)
     def generateclue(gatheredclues):
         result=""
         if gatheredclues[0]==1:
             result+="noticed annie's feeling\n"
         if gatheredclues[1]==1:
-            result+="find a horse from remoos company\n"
+            result+="found a horse from Reeves company\n"
         if gatheredclues[2]==1:
             result+="found a way to communicate with survey corp\n"
         return result
@@ -141,14 +192,13 @@ label chapter_5:
     n "你想起来了：你可以用一种一般人想也不敢想的方式控制你在空中的位置。你靠在缆绳上。这是三年训练的成果。"
     jump chapter_6
 label chapter_6:
-    n "这是你第一次看到这些吗？"
-    menu chapter_6_choice:
-        "是（阅读新手教程）":
-            jump chapter_7
-        "否":
-            jump chapter_96
+    if seen_tutorial:
+        jump chapter_96
+    jump chapter_7
+
 label chapter_7:
     #黑屏
+    $seen_tutorial=True
     n "你想起来了，你是104期训练兵团特罗斯特训练营的一员，位于罗塞之墙最南侧。"
     n "罗塞之墙东南西北四个方向都有训练营，而南侧是离前线最近的街区。"
     n "经过了三年的艰苦训练，你和你的同学们正处于毕业后等待——至少曾经是在等待选择自己要加入兵团。"
@@ -226,44 +276,45 @@ label chapter_9:
     n "比起三年前刚来这里的时候，特罗斯特街区变得繁忙了好多。"
     n "那么现在要去哪里呢？"
 label chapter_10:
-    show map
-    menu:
-        "外侧城门" if been_outerwalls==0:
-            $ been_outerwalls=1
-            jump chapter_21
-        "外墙":
-            jump chapter_38
-        "路边的孩子":
-            jump chapter_43
-        "小路":
-            jump chapter_50
-        "饭店":
-            jump chapter_25
-        "巨石":
-            jump chapter_31
-        "裁缝铺":
-            jump chapter_53
-        "兵团指挥部":
-            jump chapter_34
-        "小巷":
-            jump chapter_15
-        "河岸":
-            jump chapter_11
-        "中央大街":
-            jump chapter_16
-        "内城门":
-            jump chapter_48
+    call screen town_map
+
 label chapter_11:
+    $ been_riverbank=True
+    n "在河边散步的时候，你看到了一名同期训练生阿尔敏。"
+    n "他好像正在看一本书。阿尔敏很聪明，不过你听说他藏了禁书。"
+    n "你和他上前聊天，阿尔敏笑了。"
+    armin "“这不是禁书，我还没疯到拿着禁书在镇子里走的地步。我已经不是小孩子了。”"
+    n "他向你展示了他的书，是一本技术类的书籍，你想起来训练兵的日子里，只要没有上战术课或者技术课，他都在高强度自学。"
+    n "你觉得他能通过训练要求已经很了不起了。他不只是聪明，还是个用功的人。"
+    armin "你呢，你对关于外边的书有兴趣吗？"
+    menu:
+        "有兴趣":
+            jump chapter_23
+        "没兴趣（返回镇子）":
+            jump chapter_10
 label chapter_12:
+    $ talked_lovebirds=True
+    n "汉娜和弗朗兹两个人正在热切的谈话。"
+    "弗朗兹" "你不管穿什么都漂亮。"
+    "汉娜" "有你在我才不需要什么婚纱和高档婚礼呢"
+    n "看来他们在讨论结婚的事情，也对，毕竟是这对有名的情侣。"
+    menu:
+        "和其他人交谈":
+            jump chapter_53_choice
+        "回到镇子":
+            jump chapter_10
 label chapter_13:
 label chapter_14:
 label chapter_15:
+    $ been_backalley=True
 label chapter_16:
+    $ been_mainstreet=True
 label chapter_17:
 label chapter_18:
 label chapter_19:
 label chapter_20:
 label chapter_21:
+    $ been_outergate=True
     n "调查兵团出去了"
     menu:
         "回忆出击场景":
@@ -271,37 +322,52 @@ label chapter_21:
         "返回镇子":
             jump chapter_10
 label chapter_22:
+    n "onward with sc"
+    jump chapter_10
 label chapter_23:
 label chapter_24:
 label chapter_25:
+    $ been_restaurant=True
 label chapter_26:
 label chapter_27:
 label chapter_28:
+    n "ema talk"
+    jump chapter_10
 label chapter_29:
 label chapter_30:
 label chapter_31:
+    $ been_boulder=True
 label chapter_32:
 label chapter_33:
 label chapter_34:
+    $ been_headquaters=True
 label chapter_35:
 label chapter_36:
 label chapter_37:
 label chapter_38:
+    $ been_outerwalls=True
+
 label chapter_39:
 label chapter_40:
 label chapter_41:
 label chapter_42:
 label chapter_43:
+    $ been_kids=True
+    n "dialog with kids"
+    jump chapter_28
 label chapter_44:
 label chapter_45:
 label chapter_46:
 label chapter_47:
 label chapter_48:
+    $ been_innergate=True
 label chapter_49:
 label chapter_50:
+    $ been_sideroad=True
 label chapter_51:
 label chapter_52:
 label chapter_53:
+    $ been_tailor=True
 label chapter_54:
 label chapter_55:
 label chapter_56:
@@ -548,8 +614,6 @@ label chapter_296:
 label chapter_297:
 label chapter_298:
 label chapter_299:
-    n "not quite"
-    return
 label chapter_300:
 label chapter_301:
 label chapter_302:

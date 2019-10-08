@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 5: expected '=' not found.
-    default unlocedclues[0,0,0]
-                        ^
+File "game/script.rpy", line 271: expected ':' not found.
+    "有兴趣"：
+         ^
 
 Ren'Py Version: Ren'Py 7.3.2.320
-Wed Sep 04 23:51:26 2019
+Sun Oct 06 20:36:50 2019

@@ -172,12 +172,13 @@ screen battlereport():
         yalign 0.5
         add "battle report.png" xalign 0.5 yalign 0.5 zoom .3
         frame:
+        ##todo:好感度和生存
             maximum (250,250)
             pos (12, 100)
             padding (0, 0)
             background None
             $clues=generateclue(unlockedclues)
-            text clues color("#000") 
+            text clues color("#000")
 
 screen titanroster():
     frame:
@@ -221,6 +222,35 @@ style input_prompt:
 style input:
     xalign gui.dialogue_text_xalign
     xmaximum gui.dialogue_width
+
+screen town_map():
+    imagemap:
+        ground "map.jpg"
+        hover "map-hover.jpg"
+        if not been_outergate:
+            hotspot (44, 348, 334, 69) clicked Jump("chapter_21")
+        if not been_outerwalls:
+            hotspot (316, 620, 234, 72) clicked Jump("chapter_38")
+        if not been_kids:
+            hotspot (309, 151, 166, 81) clicked Jump("chapter_43")
+        if not been_sideroad:
+            hotspot (469, 102, 161, 94) clicked Jump("chapter_50")
+        if not been_restaurant:
+            hotspot (394, 234, 203, 78) clicked Jump("chapter_25")
+        if not been_boulder:
+            hotspot (488, 382, 132, 63) clicked Jump("chapter_31")
+        if not been_tailor:
+            hotspot (682, 188, 165, 51) clicked Jump("chapter_53")
+        if not been_headquaters:
+            hotspot (647, 395, 234, 51) clicked Jump("chapter_34")
+        if not been_backalley:
+            hotspot (780, 536, 193, 56) clicked Jump("chapter_15")
+        if not been_riverbank:
+            hotspot (803, 463, 338, 28) clicked Jump("chapter_11")
+        if not been_mainstreet:
+            hotspot (695, 278, 351, 29) clicked Jump("chapter_16")
+        if not been_innergate:
+            hotspot (927, 163, 169, 50) clicked Jump("chapter_48")
 
 
 ## 选择屏幕 ########################################################################
